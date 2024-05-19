@@ -7,6 +7,7 @@ import appRouter from './src/modules/app.router.js';
 
 
 dotenv.config();
+console.log(process.env.SECRET_KEY)
 
 const app = express();
 const port = process.env.PORT;
