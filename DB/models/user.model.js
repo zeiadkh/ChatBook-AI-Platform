@@ -1,43 +1,46 @@
-import mongoose, {Schema, Types, model} from "mongoose"
+import mongoose, { Schema, Types, model } from "mongoose";
 
 const userSchema = new Schema({
   userName: {
     type: String,
     required: true,
     minlength: 3,
-    maxlength: 20 
-    },
+    maxlength: 20,
+  },
   email: {
     type: String,
     required: true,
     unique: true,
-    lowercase: true
-    },
+    lowercase: true,
+  },
   password: {
     type: String,
     required: true,
-    
-    },
-  phone: Number,
-  status: {type: String, enum:["offline", "online"], default: "offline"},
-  role: {type: String, enum: ["user", "admin"], default: "user"},
-  isConfirmed: {type: Boolean, default: false, },
-  forgetCode: {type: String, },
-  activationCode: {type: String},
-  porfilePic: {
-    url: {type: String, default: "https://res.cloudinary.com/dtp47o37p/image/upload/v1691265763/e-commerce/defaults/png-transparent-default-avatar-thumbnail_mojudr.png"},
-    id: {type: String, default: "e-commerce/defaults/png-transparent-default-avatar-thumbnail_mojudr"}
   },
-  favourites: 
-  [
-   {
-     id: { type: Types.ObjectId, ref: "Book", required: true, unique: true },
-   },
- ],
-},
- );
+  phone: Number,
+  status: { type: String, enum: ["offline", "online"], default: "offline" },
+  role: { type: String, enum: ["user", "admin"], default: "user" },
+  isConfirmed: { type: Boolean, default: false },
+  forgetCode: { type: String },
+  activationCode: { type: String },
+  porfilePic: {
+    url: {
+      type: String,
+      default:
+        "https://res.cloudinary.com/dtp47o37p/image/upload/v1691265763/e-commerce/defaults/png-transparent-default-avatar-thumbnail_mojudr.png",
+    },
+    id: {
+      type: String,
+      default:
+        "e-commerce/defaults/png-transparent-default-avatar-thumbnail_mojudr",
+    },
+  },
+  favourites: [
+    {
+      id: { type: Types.ObjectId, ref: "Book", required: true, unique: true },
+    },
+  ],
+});
 
-
-
-const User = mongoose.model.User || model('User', userSchema)
+const User = mongoose.model.User || model("User", userSchema);
 export default User;

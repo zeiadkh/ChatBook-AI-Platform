@@ -6,21 +6,21 @@ export const create = async (req, res, next) => {
     return next(
       new Error("You must provide a book and a cover to add", { cause: 400 })
     );
-  
-  const { secure_url: book_url, public_id: bookPublic_id } = await cloudinary.uploader.upload(
-    req.files.book[0].path,
-    { folder: `${process.env.cloud_folder}/books` }
-  );
-  const { secure_url: cover_url, public_id: coverPublic_id } = await cloudinary.uploader.upload(
-    req.files.cover[0].path,
-    { folder: `${process.env.cloud_folder}/covers` }
-  );
+
+  const { secure_url: book_url, public_id: bookPublic_id } =
+    await cloudinary.uploader.upload(req.files.book[0].path, {
+      folder: `${process.env.cloud_folder}/books`,
+    });
+  const { secure_url: cover_url, public_id: coverPublic_id } =
+    await cloudinary.uploader.upload(req.files.cover[0].path, {
+      folder: `${process.env.cloud_folder}/covers`,
+    });
   const result = await Book.create({
     ...req.body,
     book: { url: book_url, id: bookPublic_id },
     cover: { url: cover_url, id: coverPublic_id },
   });
-  console.log(cover_url, book_url)
+  console.log(cover_url, book_url);
   return res.status(201).json({ sucess: true, results: result });
 };
 
@@ -45,10 +45,10 @@ export const update = async (req, res, next) => {
       await result.save();
     } else if (req.files.cover) {
       const { secure_url: cover_url } = await cloudinary.uploader
-      .upload(req.files.cover[0].path, {
-        public_id: result.cover.id,
-      })
-      .catch((err) => console.log(err));
+        .upload(req.files.cover[0].path, {
+          public_id: result.cover.id,
+        })
+        .catch((err) => console.log(err));
       result.cover.url = cover_url;
       await result.save();
     }
@@ -94,5 +94,3 @@ export const getSingleBook = async (req, res, next) => {
   if (!result) return next(new Error("Book not found", { cause: 404 }));
   return res.json({ success: true, message: result });
 };
-
-

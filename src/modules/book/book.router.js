@@ -2,9 +2,19 @@ import { isAuthenticated } from "../../middleware/authentication.js";
 import isAuthroized from "../../middleware/authrization.js";
 import isValid from "../../middleware/isValid.js";
 import uploadFile, { typesObj } from "../../utils/multer.js";
-import { createSchema,  idCheckSchema, updateSchema } from "./book.validation.js";
+import {
+  createSchema,
+  idCheckSchema,
+  updateSchema,
+} from "./book.validation.js";
 import { Router } from "express";
-import { create, deleteBook, get, getSingleBook,update } from "./book.controller.js";
+import {
+  create,
+  deleteBook,
+  get,
+  getSingleBook,
+  update,
+} from "./book.controller.js";
 import catchError from "../../utils/catchError.js";
 
 const router = new Router();
@@ -40,11 +50,8 @@ router.delete(
   isValid(idCheckSchema),
   catchError(deleteBook)
 );
-router.get(
-  "/",
-  catchError(get)
-);
+router.get("/", catchError(get));
 
-router.get("/:bId", isValid(idCheckSchema), catchError(getSingleBook))
+router.get("/:bId", isValid(idCheckSchema), catchError(getSingleBook));
 
 export default router;

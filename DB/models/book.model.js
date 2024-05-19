@@ -26,7 +26,7 @@ const bookSchema = new Schema({
   book: {
     url: {
       type: String,
-      required: true
+      required: true,
     },
     id: {
       type: String,
@@ -36,19 +36,21 @@ const bookSchema = new Schema({
   },
   description: { type: String, minlength: 10, required: true },
 });
-bookSchema.query.paginate = function (page){
-  page = !page || page<1 || isNaN(page)? 1 : page
+bookSchema.query.paginate = function (page) {
+  page = !page || page < 1 || isNaN(page) ? 1 : page;
   const limit = 2;
   return this.skip(limit * (page - 1)).limit(limit);
-}
+};
 
-bookSchema.query.selection = function (feilds){
-if(!feilds) return this
-const modelKeys = Object.keys(bookSchema.paths)
-const feildsArray = feilds.split(' ')
-feilds = feildsArray.filter(feild => modelKeys.includes(feild) || modelKeys.includes(feild.split('-')[1]))
-return this.select(feilds)
-
-}
+bookSchema.query.selection = function (feilds) {
+  if (!feilds) return this;
+  const modelKeys = Object.keys(bookSchema.paths);
+  const feildsArray = feilds.split(" ");
+  feilds = feildsArray.filter(
+    (feild) =>
+      modelKeys.includes(feild) || modelKeys.includes(feild.split("-")[1])
+  );
+  return this.select(feilds);
+};
 const Book = mongoose.model.Book || model("Book", bookSchema);
 export default Book;
