@@ -9,7 +9,8 @@ import { resetTemp, confirmationTemp } from "../../utils/htmlTemp.js";
 
 export const register = async (req, res, next) =>{
 
-    let {userName, email, password, role} = req.body;
+    let {userName, email, password, confirmPassword, role} = req.body;
+    if(password !== confirmPassword) return next(new Error("password & confirm password didn't match"))
 
     if (await User.findOne({email})) return next(new Error('email already used', {cause: 409}))
 

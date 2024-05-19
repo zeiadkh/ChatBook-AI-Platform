@@ -12,6 +12,28 @@
     "/auth/register": {
       "post": {
         "description": "",
+        "parameters":[
+          {
+          "in": "body",
+          "name": "userName",
+          "type": "string"
+        },
+        {
+          "in": "body",
+          "name": "email",
+          "type": "string"
+        },
+        {
+          "in": "body",
+          "name": "password",
+          "type": "string"
+        },
+        {
+          "in": "body",
+          "name": "confirmPassword",
+          "type": "string"
+        }
+      ],
         "responses": {
           "default": {
             "description": ""
@@ -67,7 +89,28 @@
             "name": "token",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "bookName",
+            "in": "body",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "body",
+            "type": "string"
+          },
+          {
+            "name": "author",
+            "in": "body",
+            "type": "string"
+          },
+          {
+            "name": "coverImg",
+            "in": "body",
+            "type": "string"
           }
+          
         ],
         "responses": {
           "default": {
