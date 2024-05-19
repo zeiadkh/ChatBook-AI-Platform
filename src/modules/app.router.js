@@ -1,6 +1,6 @@
 // app-router.js
 
-import cors from "cors";
+// import cors from "cors";
 import express from "express";
 import fs from 'fs/promises';
 import swaggerUi from 'swagger-ui-express';
@@ -12,7 +12,7 @@ import userRouter from "./user/user.router.js";
 
 export default async function setupApp(app) {
   app.use(express.json());
-  app.use(cors());
+  // app.use(cors());
   
   // Add your existing routes
   app.use("/auth", authRouter);
