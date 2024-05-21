@@ -12,28 +12,6 @@
     "/auth/register": {
       "post": {
         "description": "",
-        "parameters":[
-          {
-          "in": "body",
-          "name": "userName",
-          "type": "string"
-        },
-        {
-          "in": "body",
-          "name": "email",
-          "type": "string"
-        },
-        {
-          "in": "body",
-          "name": "password",
-          "type": "string"
-        },
-        {
-          "in": "body",
-          "name": "confirmPassword",
-          "type": "string"
-        }
-      ],
         "responses": {
           "default": {
             "description": ""
@@ -89,28 +67,7 @@
             "name": "token",
             "in": "header",
             "type": "string"
-          },
-          {
-            "name": "bookName",
-            "in": "body",
-            "type": "string"
-          },
-          {
-            "name": "description",
-            "in": "body",
-            "type": "string"
-          },
-          {
-            "name": "author",
-            "in": "body",
-            "type": "string"
-          },
-          {
-            "name": "coverImg",
-            "in": "body",
-            "type": "string"
           }
-          
         ],
         "responses": {
           "default": {
@@ -172,6 +129,9 @@
       },
       "get": {
         "description": "",
+        "parameters": [
+          { "name": "bId", "in": "path", "required": true, "type": "string" }
+        ],
         "responses": {
           "default": {
             "description": ""
@@ -183,7 +143,13 @@
       "post": {
         "description": "",
         "parameters": [
-          { "name": "bId", "in": "path", "required": true, "type": "string", "default": "6585ff6810f49f43df3c6daa" },
+          {
+            "name": "bId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "default": "6585ff6810f49f43df3c6daa"
+          },
           { "name": "sPg", "in": "path", "required": true, "type": "string" },
           { "name": "ePg", "in": "path", "required": true, "type": "string" }
         ],
@@ -255,5 +221,17 @@
         }
       }
     }
-  }
+  },
+  "securityDefinitions": {
+    "cors": {
+      "type": "apiKey",
+      "name": "Access-Control-Allow-Origin",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "cors": []
+    }
+  ]
 }
