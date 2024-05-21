@@ -12,7 +12,7 @@ export async function summarize(bookId, sPg, ePg) {
 
   const pdfId = fullUrl.split("upload/")[1];
   const cloudinaryUrl = `https://res.cloudinary.com/${process.env.CLOUD_NAME}/image/upload/${pdfId}`;
-  const filePath = path.join(__dirname, `../temp/${bookId}.pdf`);
+  const filePath = path.join(__dirname, `../../temp/${bookId}.pdf`);
 
   await downloadFile(cloudinaryUrl, filePath)
     .then(() => {
