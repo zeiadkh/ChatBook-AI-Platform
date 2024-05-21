@@ -31,7 +31,7 @@ export async function summarize(bookId, sPg, ePg) {
 
   async function query(data) {
     if (data.error) return { error: data.error };
-    const response = await fetch("https://ddbe-35-247-135-205.ngrok-free.app/", {
+    const response = await fetch("https://aad4-34-142-139-126.ngrok-free.app/", {
       headers: { "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify({ text: data }),
