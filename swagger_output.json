@@ -5,9 +5,9 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "localhost:5000",
+  "host": "https://chatbook-back-pro.onrender.com",
   "basePath": "/",
-  "schemes": ["http"],
+  "schemes": ["https"],
   "paths": {
     "/auth/register": {
       "post": {
@@ -221,17 +221,5 @@
         }
       }
     }
-  },
-  "securityDefinitions": {
-    "cors": {
-      "type": "apiKey",
-      "name": "Access-Control-Allow-Origin",
-      "in": "header"
-    }
-  },
-  "security": [
-    {
-      "cors": []
-    }
-  ]
+  }
 }
