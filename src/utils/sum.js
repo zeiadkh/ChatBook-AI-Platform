@@ -31,12 +31,12 @@ export async function summarize(bookId, sPg, ePg) {
 
   async function query(data) {
     if (data.error) return { error: data.error };
-    const response = await fetch("https://aad4-34-142-139-126.ngrok-free.app/", {
+    const response = await fetch("https://26c0-35-192-32-149.ngrok-free.app/", {
       headers: { "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify({ text: data }),
     });
-    if (!response.ok) throw new Error("sorry there is a problem with the summariztion model connection.");
+    if (!response.ok) return {error:"sorry there is a problem with the summariztion model connection."};
     let result = await response.json();
     
     return { full: data, summary: result.summary.replace(/\r?\n|\r/g, '') };
