@@ -6,7 +6,7 @@ const summarizer = async (req, res, next) => {
   
   try {
     const sum = await summarize(bId, sPg, ePg);
-    console.log(sum)
+    // console.log(sum)
     if (!sum.error) {
       return res.status(200).json({
         success: true,

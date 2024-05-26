@@ -38,7 +38,7 @@ const bookSchema = new Schema({
 });
 bookSchema.query.paginate = function (page) {
   page = !page || page < 1 || isNaN(page) ? 1 : page;
-  const limit = 2;
+  const limit = 6;
   return this.skip(limit * (page - 1)).limit(limit);
 };
 

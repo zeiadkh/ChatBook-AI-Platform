@@ -9,11 +9,11 @@ export const create = async (req, res, next) => {
 
   const { secure_url: book_url, public_id: bookPublic_id } =
     await cloudinary.uploader.upload(req.files.book[0].path, {
-      folder: `${process.env.cloud_folder}/books`,
+      folder: `${process.env.CLOUD_FOLDER}/books`,
     });
   const { secure_url: cover_url, public_id: coverPublic_id } =
     await cloudinary.uploader.upload(req.files.cover[0].path, {
-      folder: `${process.env.cloud_folder}/covers`,
+      folder: `${process.env.CLOUD_FOLDER}/covers`,
     });
   const result = await Book.create({
     ...req.body,
