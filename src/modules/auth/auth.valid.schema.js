@@ -4,7 +4,7 @@ export const registerSchema = joi
     userName: joi.string().min(3).max(20).required(),
     email: joi.string().email().lowercase().required(),
     password: joi.string().required(),
-    confirmPass: joi.string().valid(joi.ref("password")).required(),
+    confirmPassword: joi.string().valid(joi.ref("password")).required(),
     role: joi.string().valid("admin", "user"),
   })
   .required();

@@ -8,7 +8,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Function to extract text from a specific chapter in a PDF file
 export default async function extractTextFromPdf(pdfPath, spg, epg) {
-  epg = +epg + 1;
+  spg = parseInt(spg)
+  epg = parseInt(epg)
+  spg = spg + 1;
   try {
     let dataBuffer = fs.readFileSync(pdfPath);
 
