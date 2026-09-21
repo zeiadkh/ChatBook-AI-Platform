@@ -22,8 +22,8 @@ A powerful backend service engineered to enable AI-powered summarization and con
 
 1. **Clone the repository:**
      ```bash
-     git clone https://github.com/zeiadkh/NextShop-Fullstack.git
-     cd NextShop-Fullstack
+    git clone https://github.com/zeiadkh/ChatBook-AI-Platform.git
+     cd ChatBook-AI-Platform
 2. **Set up the environment:**
      ```bash
      npm install
